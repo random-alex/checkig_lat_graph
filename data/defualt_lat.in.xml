@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ALPS.xsl"?>
+<JOB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://xml.comp-phys.org/2003/8/job.xsd">
+  <OUTPUT file="defualt_lat.out.xml"/>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task1.in.xml"/>
+    <OUTPUT file="defualt_lat.task1.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task2.in.xml"/>
+    <OUTPUT file="defualt_lat.task2.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task3.in.xml"/>
+    <OUTPUT file="defualt_lat.task3.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task4.in.xml"/>
+    <OUTPUT file="defualt_lat.task4.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task5.in.xml"/>
+    <OUTPUT file="defualt_lat.task5.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task6.in.xml"/>
+    <OUTPUT file="defualt_lat.task6.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task7.in.xml"/>
+    <OUTPUT file="defualt_lat.task7.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task8.in.xml"/>
+    <OUTPUT file="defualt_lat.task8.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task9.in.xml"/>
+    <OUTPUT file="defualt_lat.task9.out.xml"/>
+  </TASK>
+  <TASK status="new">
+    <INPUT file="defualt_lat.task10.in.xml"/>
+    <OUTPUT file="defualt_lat.task10.out.xml"/>
+  </TASK>
+</JOB>
