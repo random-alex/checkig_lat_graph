@@ -80,9 +80,10 @@ my_read <- function(dir,cl = 3,pattern = '.out.h5', flag = 'standart'){
 
 
 # read files --------------------------------------------------------------
+pat <- 'size2'
 
 df_init_par <- tibble(dir = list.files(dir,pattern = '.out.h5',full.names = T)) %>% 
-  filter(str_detect(dir,'lat')) %>% 
+  filter(str_detect(dir,pat)) %>% 
   mutate(init_par = map(dir,my_read_parameters)) %>% 
   unnest(init_par) %>% 
   filter(parameter %in% c('L','T','LATTICE')) %>% 
@@ -91,14 +92,17 @@ df_init_par <- tibble(dir = list.files(dir,pattern = '.out.h5',full.names = T)) 
 
 
 df_data <- tibble(dir = list.files(dir,pattern = '.out.h5',full.names = T)) %>% 
-  filter(str_detect(dir,'lat')) %>% 
-  mutate(init_par = map(dir,my_read_sim)) %>% 
-  unnest(init_par) 
+  filter(str_detect(dir,pat)) %>% 
+  mutate(init_par = map(dir,possibly(my_read_sim, otherwise = tibble(error_read = 'error')))) %>% 
+  unnest(init_par) %>% 
+  filter(is.na(error_read)) %>% 
+  select(-error_read)
+
 
 
 # Compare lattices ------------------------------------------------------
 df_data1 <- df_data %>% 
-  # filter(type %in% c("Staggered Magnetization Density^2")) %>% 
+  filter(!str_detect(type,'Sign')) %>%
   unnest(value) %>% 
   filter(parameter %in% c('mean')) %>% 
   select(-c(parameter) ) %>% 
@@ -119,7 +123,8 @@ df %>%
 
 
 df %>%
-  mutate(`T` = as.numeric(`T`)) %>% 
+  mutate(`T` = as.numeric(`T`)) %>%
+  # filter(LATTICE != 'square lattice') %>% 
   # mutate(value = value/(as.numeric(as.character(L))^2)) %>%
   ggplot(aes(`T`,value,col = LATTICE)) +
   geom_line() +
