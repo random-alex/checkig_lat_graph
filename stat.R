@@ -80,7 +80,7 @@ my_read <- function(dir,cl = 3,pattern = '.out.h5', flag = 'standart'){
 
 
 # read files --------------------------------------------------------------
-pat <- 'size2'
+pat <- 'size4'
 
 df_init_par <- tibble(dir = list.files(dir,pattern = '.out.h5',full.names = T)) %>% 
   filter(str_detect(dir,pat)) %>% 
@@ -94,15 +94,15 @@ df_init_par <- tibble(dir = list.files(dir,pattern = '.out.h5',full.names = T)) 
 df_data <- tibble(dir = list.files(dir,pattern = '.out.h5',full.names = T)) %>% 
   filter(str_detect(dir,pat)) %>% 
   mutate(init_par = map(dir,possibly(my_read_sim, otherwise = tibble(error_read = 'error')))) %>% 
-  unnest(init_par) %>% 
-  filter(is.na(error_read)) %>% 
-  select(-error_read)
+  unnest(init_par) #%>% 
+  # filter(is.na(error_read)) %>% 
+  # select(-error_read)
 
 
 
 # Compare lattices ------------------------------------------------------
 df_data1 <- df_data %>% 
-  filter(!str_detect(type,'Sign')) %>%
+  # filter(!str_detect(type,'Sign')) %>%
   unnest(value) %>% 
   filter(parameter %in% c('mean')) %>% 
   select(-c(parameter) ) %>% 
@@ -134,6 +134,8 @@ df %>%
   # facet_grid(type ~ .,scales = 'free',labeller = label_both) +
   facet_wrap(c('type'),scales = 'free',labeller = label_both) +
   theme_bw()
+
+unique(df$type)
 
 
 ss <- df %>% 
