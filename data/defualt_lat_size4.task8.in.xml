@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ALPS.xsl"?>
+<SIMULATION xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://xml.comp-phys.org/2003/8/QMCXML.xsd">
+  <PARAMETERS>
+<PARAMETER name="local_S">0.5</PARAMETER>
+<PARAMETER name="J">4</PARAMETER>
+<PARAMETER name="L">3</PARAMETER>
+<PARAMETER name="LATTICE">square lattice</PARAMETER>
+<PARAMETER name="SEED">0</PARAMETER>
+<PARAMETER name="T">0.8</PARAMETER>
+<PARAMETER name="MODEL">spin</PARAMETER>
+<PARAMETER name="LATTICE_LIBRARY">lattices.xml</PARAMETER>
+<PARAMETER name="h">0</PARAMETER>
+<PARAMETER name="SWEEPS">40000</PARAMETER>
+<PARAMETER name="THERMALIZATION">10000</PARAMETER>
+  </PARAMETERS>
+</SIMULATION>
